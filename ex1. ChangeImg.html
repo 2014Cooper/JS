@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img class="banner_img" src="./imgs/normann-imgs-main/section1/ldp_img-1.png" alt="">
+    <script>
+        const img = document.querySelector(".banner_img");
+        // 如果是第一張圖的話
+        let isOriImg = true;
+
+        // 監聽功能，如果做出相對應的動作則回傳訊息
+
+        // 滑鼠點擊圖片更換圖片
+        img.addEventListener("click", function () {
+            console.log("img clicked");
+
+
+            // if (isOriImg) {
+            //     img.setAttribute("src", "./imgs/UzU4kzp.jpg");
+            //     isOriImg = false;
+            // }
+            // else {
+            //     img.setAttribute("src", "./imgs/normann-imgs-main/section1/ldp_img-1.png");
+            //     isOriImg = true;
+            // }
+
+
+            if (isOriImg) {
+                img.setAttribute("src", "./imgs/UzU4kzp.jpg");
+            }
+            else {
+                img.setAttribute("src", "./imgs/normann-imgs-main/section1/ldp_img-1.png");
+            }
+            // !代表相反(true變false, false變true)
+            isOriImg = !isOriImg;
+        })
+
+        // 滑鼠滑到圖片上可以換圖片
+        // img.addEventListener("mouseover", function () {
+        //     this.src = "./imgs/UzU4kzp.jpg"
+        // })
+        // img.addEventListener("mouseout", function () {
+        //     this.src = "./imgs/normann-imgs-main/section1/ldp_img-1.png"
+        // })
+    </script>
+</body>
+
+</html>

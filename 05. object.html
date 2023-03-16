@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const myObj = { 'key1': 'value1', 'key2': 'value2', 'key3': 'value3' };
+
+        // 取key值value的兩種方法
+        console.log("1:", myObj["key1"]);
+        console.log("2:", myObj.key2);
+
+        const keyFromServer = "key3";
+        console.log("variable", myObj[keyFromServer])
+
+        // Object內新增key value
+        myObj.key4 = "value4"
+        console.log(myObj)
+        // Object內修改key value
+        myObj.key1 = "value1New"
+        console.log(myObj)
+        // Object內刪除key value
+        delete myObj.key1
+        console.log(myObj)
+        // 列出Object中的key值
+        console.log("myObj: ", Object.keys(myObj))
+        console.log("myObj[0]: ", Object.keys(myObj)[0])
+        console.log("myObj[0]: ", myObj[Object.keys(myObj)[0]])
+        // 列出Object中的value值
+        console.log("myObj: ", Object.values(myObj))
+        // 同時給key value值
+        console.log("myObject: ", Object.entries(myObj))
+        // object沒有計算長度的方法，但array有，但是可以取object的key或是value(此時回傳是array)來計算object的長度
+        console.log("myObject.length", myObj.length);
+        console.log("myObject.length", Object.keys(myObj).length)
+    </script>
+</body>
+
+</html>

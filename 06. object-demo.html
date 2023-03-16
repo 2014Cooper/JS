@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obj demo</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+        /* #mainMeal {
+            padding-left: 10px;
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #sideMeal {
+            padding-left: 10px;
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #result p { */
+        /* align-items: start; */
+        /* line-height: 50px;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="allMenuArea"></div>
+    <div id="mainMeal">
+        <!-- <button>1號餐</button>
+        <button>2號餐</button>
+        <button>3號餐</button> -->
+    </div>
+    <div id="sideMeal">
+        <!-- <button>A</button>
+        <button>B</button>
+        <button>C</button> -->
+    </div>
+    <div id="result">
+        <p>主餐你點的是：<span id="mainMealResult"></span> </p>
+        <p>副餐你點的是：<span id="sideMealResult"></span></p>
+        <p>總價格：<span id="totalPrice"></span></p>
+    </div>
+
+    <script>
+        let allMenu = {};
+        let mainMealMenu = {};
+        // const mainMealMenu = { '1號餐': { 'name': '大麥克', 'price': 72 }, '2號餐': { 'name': '雙層牛肉吉事堡', 'price': 62 }, '3號餐': { 'name': '嫩煎雞腿堡', 'price': 82 } };
+
+        let sideMealMenu = {};
+        // const sideMealMenu = { 'A': { 'name': '中薯+飲料', 'price': 55 }, 'B': { 'name': '冰旋風+飲料', 'price': 85 }, 'C': { 'name': '麥克雞塊+薯條+飲料', 'price': 100 } };
+
+        const allMenuArea = document.querySelector("#allMenuArea")
+        // const mainMeal = document.querySelector('#mainMeal');
+        // const sideMeal = document.querySelector('#sideMeal');
+        const mainMealResult = document.querySelector('#mainMealResult');
+        const sideMealResult = document.querySelector('#sideMealResult');
+        const totalPrice = document.querySelector('#totalPrice');
+
+
+        fetch("http://127.0.0.1:5000/menu")
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (menuData) {
+                console.log("menuData", menuData);
+                const keys = Object.keys(menuData);
+                console.log("keys", keys);
+
+                // mainMeal.innerHTML = `
+                // <button>${keys[0]}</button>
+                // <button>${keys[1]}</button>
+                // <button>${keys[2]}</button>
+                // `;
+
+
+                let allBtnDoms = '';
+
+                // for (宣告變數(執行次數); 執行條件; 每次迴圈結束後要做甚麼(i++: i=i+1)) {}
+                for (let i = 0; i < Object.keys(menuData).length; i++) {
+                    allBtnDoms += `<button>${Object.keys(menuData)[i]}</button>`
+                }
+
+
+                allMenuArea.innerHTML = allBtnDoms;
+                allMenu = menuData
+
+
+                mainMealMenu[keys[0]] = menuData[keys[0]];
+                mainMealMenu[keys[1]] = menuData[keys[1]];
+                mainMealMenu[keys[2]] = menuData[keys[2]];
+
+                // sideMeal.innerHTML = `
+                // <button>${keys[3]}<button>
+                // <button>${keys[4]}<button>
+                // <button>${keys[5]}<button>
+                // `;
+                sideMealMenu[keys[3]] = menuData[keys[3]];
+                sideMealMenu[keys[4]] = menuData[keys[4]];
+                sideMealMenu[keys[5]] = menuData[keys[5]];
+            })
+
+        let mainMealPrice = 0;
+        let sideMealPrice = 0;
+
+        allMenuArea.addEventListener('click', function (event) {
+            console.log('event target:', event.target.innerText);
+            const mealName = event.target.innerText;
+
+            // 找出開頭為整數的
+            console.log("parseInt()", parseInt(mealName));
+
+            if (parseInt(mealName)) {
+                console.log('data:', mainMealMenu[mealName]);
+                const mealDetail = mainMealMenu[mealName];
+                mainMealPrice = mealDetail.price;
+
+                mainMealResult.innerHTML = `${mealDetail.name}, 價格：${mealDetail.price}`;
+                totalPrice.innerHTML = mainMealPrice + sideMealPrice;
+            }
+            else {
+                console.log("data: ", sideMealMenu[mealName]);
+                const mealDetail = sideMealMenu[mealName];
+                sideMealPrice = mealDetail.price;
+
+                sideMealResult.innerHTML = `${mealDetail.name}, 價格:${mealDetail.price}`;
+                totalPrice.innerHTML = mainMealPrice + sideMealPrice;
+            }
+
+        })
+
+        // mainMeal.addEventListener('click', function (event) {
+        //     console.log('event target:', event.target.innerText);
+        //     const mealName = event.target.innerText;
+        //     console.log('data:', mainMealMenu[mealName]);
+        //     const mealDetail = mainMealMenu[mealName];
+        //     mainMealPrice = mealDetail.price;
+
+        //     mainMealResult.innerHTML = `${mealDetail.name}, 價格：${mealDetail.price}`;
+        //     totalPrice.innerHTML = mainMealPrice + sideMealPrice;
+        // })
+
+        // sideMeal.addEventListener("click", function (event) {
+        //     console.log("event target: ", event.target.innerText);
+        //     const mealName = event.target.innerText;
+        //     console.log("data: ", sideMealMenu[mealName]);
+        //     const mealDetail = sideMealMenu[mealName];
+        //     sideMealPrice = mealDetail.price;
+
+        //     sideMealResult.innerHTML = `${mealDetail.name}, 價格:${mealDetail.price}`;
+        //     totalPrice.innerHTML = mainMealPrice + sideMealPrice;
+        // })
+
+
+
+    </script>
+</body>
+
+</html>

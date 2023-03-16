@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5用法
+        var myName = 'Eason';
+        console.log('Hello', myName);
+
+        // ES6用法
+        let yourName = 'Márquez';
+        yourName = "ANdy"
+        console.log('Hi', yourName, ", I\'m ", myName);
+
+
+        const noReAssignment = 10; // const 代表常數變數，宣告後就不能在修改
+        console.log('Can’t re-assignment variable', noReAssignment);
+
+        // let與var差不多，var會提昇(Hoist)，會先掃描後面的變數儲存在執行程式，但變數沒有值(undefined)，let則是會直接顯示錯誤(此時可以按ctrl並點變數去連結錯誤的變數)
+        // or: var myName;
+        console.log("Hello", myName1)
+        var myName1 = "Liu" // 此時 myName = undefined
+
+        console.log("Hello", myName2)
+        let myName2 = "Lin"
+
+        // var重複宣告變數不會出錯，而是替代，但是會吃記憶體，let則不能重複宣告
+        var myName3 = "Liu"
+        var myName3 = "low"
+        console.log("Hello", myName3)
+
+        let myName4 = "Liu"
+        let myName4 = "low"
+        console.log("Hello", myName4)
+
+        // 現在主要都是寫const，如果需要變動的變數再回去改let，變數宣告通常是不想在後面一直寫一大串，因此先宣告，例如在02. dom.html下的myh1:
+        const myh1 = document.getElementsByClassName("myh1");
+        // 宣告之後就不用每次都要再次宣告
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const myArray = ['My value1', 'My value2', 'My value3'];
+
+        // 陣列新增值在最後
+        myArray.push("value 4");
+        console.log("my array: ", myArray);
+        // 陣列新增值在最前
+        myArray.unshift("value 0");
+        console.log("my array: ", myArray);
+        // 陣列最後面值刪除
+        myArray.pop();
+        console.log("my array: ", myArray);
+        // 陣列最前面值刪除
+        myArray.shift()
+        console.log("my array: ", myArray);
+        console.log('value1:', myArray[0]);
+        console.log('value2:', myArray[1]);
+        console.log('value3:', myArray[2]);
+        console.log('陣列長度:', myArray.length);
+        // 如果在陣列的範圍以外新增值，會強行增加，但中間的值會是empty(取出來是undefined)
+        myArray[6] = "value 5"
+        myArray[0] = "new value 0"
+        console.log("my array: ", myArray);
+        console.log("my array[5]: ", myArray[5]);
+        console.log('陣列長度:', myArray.length);
+        // slice不會動到原本的陣列，只是複製出來
+        console.log('slice:', myArray.slice(3, 5));
+        console.log("my array: ", myArray);
+        // splice(索引值, 刪除數量, 加入值)
+        console.log('splice:', myArray.splice(1, 1, ["a", "b"], "c"));
+        console.log("my array: ", myArray);
+    </script>
+</body>
+
+</html>

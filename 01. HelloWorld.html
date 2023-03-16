@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        console.log("Hello World");
+        console.log(1 + 1);
+
+        console.log("2 + 2 = ", 2 + 2);
+
+        // 除了可以用逗號分開，也可以用+號，但加號不會分辨字串與數字，並會以字串為主，如果真的要用的話需要先將小括弧讓數字運算
+        console.log("2 + 2 = " + 2 + 2);
+        console.log("2 + 2 = " + (2 + 2));
+        console.log("1" + 1);
+        // 減號無法消除，因此會重新轉回數字(數字在console顯示藍色, 字串顯示紅色)
+        console.log("1" - 1)
+        console.log("aba" - "a") // 產生not a number(NaN)
+    </script>
+</body>
+
+</html>

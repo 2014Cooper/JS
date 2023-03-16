@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+
+    <script>
+        let x = 10;
+        let y = 10;
+        console.log("x", x);
+        console.log("y", y);
+        console.log("x = y?", x == y);
+
+        let a = [0, 1, 2];
+        let b = [0, 1, 2];
+        console.log("a", a);
+        console.log("b", b);
+        console.log("a = b?", a == b);
+
+        const myName = 'Alex';
+        console.log('myName:', myName);
+        console.log('typeof myName:', typeof myName);
+
+        const myGreet = "Hello";
+        console.log(myGreet + " " + myName);
+
+
+        const myh1 = document.querySelector("h1");
+        myh1.innerHTML = myGreet + " " + myName;
+
+        // ``裡面為字串，變數以${}帶入(類似python的fstring)
+        const newStringUsingBacktick = `${myGreet}, I’m ${myName}.`; //ES6 之後可使用反引號(模板字串)
+        console.log('newStringUsingBacktick:', newStringUsingBacktick);
+        // myh1.innerHTML = newStringUsingBacktick
+
+        // let varible;
+        let varible = null
+        console.log("varible: ", varible)
+
+        if (varible) {
+            console.log("true")
+        }
+        else {
+            console.log("false")
+        }
+
+        const string1 = 'Eason';
+        const string2 = 'Eason';
+        console.log('is string1 === string2? :', string1 === string2);
+
+        const symbol1 = Symbol('Eason');
+        const symbol2 = Symbol('Eason');
+        console.log('is symbol1 === symbol2? :', symbol1 === symbol2);
+
+
+    </script>
+</body>
+
+</html>
